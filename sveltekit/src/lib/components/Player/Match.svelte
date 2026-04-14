@@ -184,4 +184,20 @@
             }
         }
     }
+
+    @media (max-width: 650px) {
+        .decks {
+            flex-direction: column;
+            gap: 0.25rem;
+
+            #middle {
+                flex-direction: row;
+                gap: 0.5rem;
+                #separator {
+                    width: 100%;
+                    height: 1px;
+                }
+            }
+        }
+    }
 </style>

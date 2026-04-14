@@ -8,10 +8,7 @@ a {
     transform: translateY(0px);
     transition: transform 0.3s cubic-bezier(0.15, 0.82, 0.76, 0.97);
 
-    &:hover {
-        transform: translateY(-5px);
-        cursor: pointer;
-    }
+
 
     img {
         width: 100%;

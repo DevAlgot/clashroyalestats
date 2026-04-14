@@ -81,9 +81,9 @@
         }
     }
 
-    @media (max-width: 880px) {
-        .upper {
-            width: 92vw;
+    @media (max-width: 650px) {
+        main.player {
+            padding: 5px;
         }
     }
 </style>

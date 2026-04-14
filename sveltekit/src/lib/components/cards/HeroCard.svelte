@@ -17,12 +17,12 @@
     }
 </script>
 
-<a href="../card/{card.name}">
+<article href="../card/{card.name}">
     <div id="card">
         <img src={card.iconUrls.heroMedium} alt="" srcset="" />
         <p>Level {getLevel(card)}</p>
     </div>
-</a>
+</article>
 
 <style lange="scss">
     img {

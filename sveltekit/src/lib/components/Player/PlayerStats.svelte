@@ -507,21 +507,26 @@
             background: var(--primary-200);
             padding: 0.75rem;
             border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
             color: var(--neutral-900);
             border: 2px solid #2828a4;
             box-shadow: 0 0 7px var(--primary-400);
+            overflow: hidden;
 
             .badge-image {
-                width: 60px;
-                height: 60px;
+                width: 130px;
+                height: auto;
                 background-size: cover;
-                margin-bottom: 0.5rem;
+                margin: -25px;
+                margin-bottom: 5px;
+            }
+            p {
+                margin: 0;
+                font-weight: 600;
             }
 
             .level {
                 margin-top: 0.25rem;
-                font-size: 0.85rem;
+                font-size: 0.95rem;
                 color: var(--neutral-600);
             }
         }
@@ -553,6 +558,18 @@
 
             #badges {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+    }
+
+    @media (max-width: 400px) {
+        .player-stats {
+            .stats#general {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            #badges {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
     }

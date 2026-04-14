@@ -1,5 +1,6 @@
 <script>
     import Trophy from "$lib/assets/trophy.png";
+    import Crown from "$lib/assets/blue-crown.png";
 
     let { player = {} } = $props();
 
@@ -57,19 +58,40 @@
     const arenaImg = getArena(player.arena);
 
     const role = player.role ?? "";
+
+    const medalClass =
+        player.clanRank === 1
+            ? "medal gold"
+            : player.clanRank === 2
+              ? "medal silver"
+              : player.clanRank === 3
+                ? "medal bronze"
+                : "";
 </script>
 
 <article class="clan-player">
-    <div class="arena"><p>{player.clanRank}</p></div>
+    <div class="arena {medalClass}"><p>{player.clanRank}</p></div>
 
     <div class="info">
         <a href="/player/{player.tag.replace('#', '')}" class="row top">
-            <h3 class="name">{player.name}</h3>
+            <h3 class="name flex">
+                {#if player.role === "leader"}
+                    <img
+                        src={Crown}
+                        width="auto "
+                        height="28px"
+                        alt=""
+                    />{player.name}
+                {:else}
+                    {player.name}
+                {/if}
+            </h3>
             <span class="tag">{player.tag}</span>
         </a>
 
         <div class="row meta">
             <span class="role">{role}</span>
+
             <span class="level">Lv {player.expLevel ?? "—"}</span>
             <span class="trophies"
                 ><img src={Trophy} width="12px" height="12px" alt="" />
@@ -103,11 +125,48 @@
             width: 72px;
             height: 72px;
             flex-shrink: 0;
-            border-radius: 8px;
+            border-radius: 16px;
             background: var(--primary-300);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
             justify-content: center;
             align-items: center;
+
+            &.medal {
+            }
+
+            &.gold {
+                $bg-color: #d4af37;
+                $border-color: lighten(
+                    $color: $bg-color,
+                    $amount: 20%,
+                );
+                background-color: $bg-color;
+                border: 3px solid $border-color;
+                box-shadow: 0 0 4px 0px $border-color;
+                color: #111;
+            }
+            &.silver {
+                $bg-color: #c0c0c0;
+                $border-color: lighten(
+                    $color: $bg-color,
+                    $amount: 20%,
+                );
+                background-color: $bg-color;
+                border: 3px solid $border-color;
+                box-shadow: 0 0 4px 0px $border-color;
+                color: #111;
+            }
+            &.bronze {
+                $bg-color: #cd7f32;
+                $border-color: lighten(
+                    $color: $bg-color,
+                    $amount: 20%,
+                );
+                background-color: $bg-color;
+                border: 3px solid $border-color;
+                box-shadow: 0 0 4px 0px $border-color;
+                color: #111;
+            }
 
             p {
                 margin: 0;
@@ -129,13 +188,31 @@
             }
 
             .top {
-                align-items: baseline;
                 color: var(--neutral-900);
+
+                * {
+                    transition: all 0.12s ease;
+
+                    &:hover {
+                        color: var(--neutral-600) !important;
+                        scale: 1.02;
+                    }
+
+                    &:active {
+                        scale: 0.98;
+                    }
+                }
 
                 .name {
                     margin: 0;
                     font-size: 1.05rem;
                     font-weight: 600;
+
+                    &.flex {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                    }
                 }
 
                 .tag {
@@ -155,6 +232,12 @@
                     border-radius: 999px;
                     font-weight: 600;
                     color: var(--accent-700);
+
+                    &.flex {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                    }
                 }
 
                 .level,

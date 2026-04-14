@@ -9,9 +9,9 @@
     let cardImage = `/src/lib/assets/images/cards/card${card.id}.png`;
 </script>
 
-<a href="../card/{card.name}">
+<article href="../card/{card.name}">
     <div id="card">
         <img src={card.iconUrls.medium} alt="" srcset="" />
         <p>Level {getLevel(card)}</p>
     </div>
-</a>
+</article>

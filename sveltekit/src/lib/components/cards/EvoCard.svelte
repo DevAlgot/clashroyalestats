@@ -9,12 +9,12 @@
     let cardImage = `/src/lib/assets/images/cards/card${card.id + 10000000}_evo.png`;
 </script>
 
-<a href="../card/{card.name}">
+<article href="../card/{card.name}">
     <div id="card">
         <img src={card.iconUrls.evolutionMedium} alt="" srcset="" />
         <p>Level {getLevel(card)}</p>
     </div>
-</a>
+</article>
 
 <style lange="scss">
     img {
